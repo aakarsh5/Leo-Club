@@ -1,1 +1,21 @@
 # Leo-Club
+
+
+
+.env file consisting of
+# Facebook API Configuration
+FACEBOOK_PAGE_ID=your_facebook_page_id
+FACEBOOK_ACCESS_TOKEN=your_facebook_access_token
+
+# EmailJS Configuration
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_emailjs_service_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+NEXT_PUBLIC_EMAILJS_CONTACT_TEMPLATE_ID=your_emailjs_contact_template_id
+NEXT_PUBLIC_EMAILJS_MEMBERSHIP_TEMPLATE_ID=your_emailjs_membership_template_id
+NEXT_PUBLIC_EMAILJS_VOLUNTEER_TEMPLATE_ID=your_emailjs_volunteer_template_id
+
+# WhatsApp Configuration
+NEXT_PUBLIC_WHATSAPP_PHONE_NUMBER=9771234567890
+
+# Other Environment Variables
+NEXT_PUBLIC_SITE_URL=https://leoclubbiratnagar.org
