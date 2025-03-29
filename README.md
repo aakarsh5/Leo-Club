@@ -2,7 +2,7 @@
 
 
 
-.env file consisting of
+# .env file consisting of
 # Facebook API Configuration
 FACEBOOK_PAGE_ID=your_facebook_page_id
 FACEBOOK_ACCESS_TOKEN=your_facebook_access_token
