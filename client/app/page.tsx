@@ -1,18 +1,19 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { ArrowRight, Users, Heart, MapPin, ArrowUpRight } from "lucide-react"
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight, Users, Heart, MapPin, ArrowUpRight } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ProjectCard } from "@/components/project-card"
-import { NewsletterForm } from "@/components/newsletter-form"
-import { Badge } from "@/components/ui/badge"
-import { useLanguage } from "@/components/language-provider"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ProjectCard } from "@/components/project-card";
+import { NewsletterForm } from "@/components/newsletter-form";
+import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/components/language-provider";
+import Slideshow from "@/components/Slideshow";
 
 export default function Home() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -29,10 +30,13 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Content Column */}
             <div className="flex flex-col space-y-6 text-center lg:text-left mb-20">
-              <Badge variant="outline" className="mx-auto lg:mx-0 animate-fade-in mb-12">
+              <Badge
+                variant="outline"
+                className="mx-auto lg:mx-0 animate-fade-in mb-12"
+              >
                 {t("home.hero.tagline")}
               </Badge>
-              
+
               <div className="space-y-4">
                 <h1 className="text-4xl py-10 md:text-5xl lg:text-6xl font-bold tracking-tight blue-yellow-gradient-text animate-slide-in-left">
                   {t("home.hero.title")}
@@ -44,8 +48,8 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in delay-200">
                 <Link href="/join" className="w-full sm:w-auto">
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     className="w-full sm:w-auto rounded-full bg-primary hover:bg-primary/90 gap-2"
                   >
                     {t("common.joinUs")} <ArrowRight className="h-4 w-4" />
@@ -62,18 +66,13 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-
             {/* Image Column */}
             <div className="relative hidden lg:block">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/10 rounded-3xl blur-xl" />
-              <Image
-                src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aGVscGluZyUyMHBvb3J8ZW58MHx8MHx8fDA%3D?height=550&width=550"
-                width={550}
-                height={550}
-                alt="Leo Club members in action"
-                className="relative z-10 mx-auto rounded-3xl shadow-2xl object-cover animate-float"
-                priority
-              />
+
+              
+              
+              
             </div>
           </div>
         </div>
@@ -94,8 +93,12 @@ export default function Home() {
                 className="flex flex-col items-center justify-center p-4 text-center animate-fade-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <span className="text-3xl md:text-4xl font-bold blue-yellow-gradient-text">{stat.value}</span>
-                <span className="text-sm md:text-base text-muted-foreground">{stat.label}</span>
+                <span className="text-3xl md:text-4xl font-bold blue-yellow-gradient-text">
+                  {stat.value}
+                </span>
+                <span className="text-sm md:text-base text-muted-foreground">
+                  {stat.label}
+                </span>
               </div>
             ))}
           </div>
@@ -106,7 +109,9 @@ export default function Home() {
       <section className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <Badge className="animate-fade-in bg-accent text-accent-foreground">{t("home.mission.title")}</Badge>
+            <Badge className="animate-fade-in bg-accent text-accent-foreground">
+              {t("home.mission.title")}
+            </Badge>
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight blue-yellow-gradient-text animate-fade-in delay-100">
                 {t("home.mission.heading")}
@@ -124,7 +129,9 @@ export default function Home() {
                   <CardTitle>{t("home.mission.leadership.title")}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{t("home.mission.leadership.description")}</p>
+                  <p className="text-muted-foreground">
+                    {t("home.mission.leadership.description")}
+                  </p>
                 </CardContent>
               </Card>
               <Card className="flex flex-col items-center text-center card-hover animate-fade-in delay-400 border-none bg-gradient-to-b from-background to-muted/50 shadow-md">
@@ -135,7 +142,9 @@ export default function Home() {
                   <CardTitle>{t("home.mission.experience.title")}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{t("home.mission.experience.description")}</p>
+                  <p className="text-muted-foreground">
+                    {t("home.mission.experience.description")}
+                  </p>
                 </CardContent>
               </Card>
               <Card className="flex flex-col items-center text-center card-hover animate-fade-in delay-500 border-none bg-gradient-to-b from-background to-muted/50 shadow-md">
@@ -146,7 +155,9 @@ export default function Home() {
                   <CardTitle>{t("home.mission.opportunity.title")}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{t("home.mission.opportunity.description")}</p>
+                  <p className="text-muted-foreground">
+                    {t("home.mission.opportunity.description")}
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -158,7 +169,9 @@ export default function Home() {
       <section className="w-full py-12 md:py-24 lg:py-32 accent-gradient">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center mb-10">
-            <Badge className="animate-fade-in bg-primary text-primary-foreground">{t("home.projects.title")}</Badge>
+            <Badge className="animate-fade-in bg-primary text-primary-foreground">
+              {t("home.projects.title")}
+            </Badge>
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight blue-yellow-gradient-text animate-fade-in delay-100">
                 {t("home.projects.heading")}
@@ -216,14 +229,21 @@ export default function Home() {
         <div className="container px-4 md:px-6">
           <div className="grid gap-10 px-10 md:gap-16 lg:grid-cols-2">
             <div className="space-y-4 animate-fade-in">
-              <Badge className="mb-2 bg-primary text-primary-foreground">{t("home.cta.title")}</Badge>
+              <Badge className="mb-2 bg-primary text-primary-foreground">
+                {t("home.cta.title")}
+              </Badge>
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight blue-yellow-gradient-text">
                 {t("home.cta.heading")}
               </h2>
-              <p className="text-muted-foreground md:text-xl text-balance">{t("home.cta.description")}</p>
+              <p className="text-muted-foreground md:text-xl text-balance">
+                {t("home.cta.description")}
+              </p>
               <div className="flex flex-col gap-2 min-[400px]:flex-row pt-2">
                 <Link href="/join">
-                  <Button size="lg" className="rounded-full bg-primary hover:bg-primary/90">
+                  <Button
+                    size="lg"
+                    className="rounded-full bg-primary hover:bg-primary/90"
+                  >
                     {t("common.joinUs")}
                   </Button>
                 </Link>
@@ -245,7 +265,7 @@ export default function Home() {
         </div>
       </section>
     </div>
-  )
+  );
 }
 
 // Add custom animations to your global CSS or Tailwind config
@@ -279,4 +299,4 @@ const customAnimations = `
     }
   }
 }
-`
+`;
