@@ -67,7 +67,7 @@ export default function Home() {
             <div className="relative hidden lg:block">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/10 rounded-3xl blur-xl" />
               <Image
-                src="/placeholder.svg?height=550&width=550"
+                src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aGVscGluZyUyMHBvb3J8ZW58MHx8MHx8fDA%3D?height=550&width=550"
                 width={550}
                 height={550}
                 alt="Leo Club members in action"
