@@ -160,21 +160,21 @@ export default function Home() {
             <ProjectCard
               title="Clean Water Initiative"
               description="Providing clean drinking water to underserved communities in Biratnagar."
-              imageSrc="/placeholder.svg?height=200&width=300"
+              imageSrc="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeCzpO3ZdBzI-EXWYWQvf3JNR9q93bExYvvA&sheight=200&width=300"
               date="March 2023"
               className="animate-fade-in delay-300"
             />
             <ProjectCard
-              title="Youth Leadership Workshop"
-              description="Training the next generation of community leaders through interactive workshops."
-              imageSrc="/placeholder.svg?height=200&width=300"
-              date="May 2023"
+              title="Menstrual Hygiene Awareness"
+              description="Educating young women about menstrual health and providing hygiene products to underserved communities."
+              imageSrc="/Slideshow and teamwork/FB_IMG_1744432733977.jpg"
+              date="June 2023"
               className="animate-fade-in delay-400"
             />
             <ProjectCard
               title="Tree Plantation Drive"
               description="Planting over 500 trees to combat deforestation and promote environmental sustainability."
-              imageSrc="/placeholder.svg?height=200&width=300"
+              imageSrc="/Slideshow and teamwork/IMG-20240809-WA0001.jpg"
               date="July 2023"
               className="animate-fade-in delay-500"
             />
