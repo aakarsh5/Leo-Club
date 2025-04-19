@@ -30,11 +30,12 @@ export function FacebookPost({ post }: FacebookPostProps) {
       {post.full_picture && (
         <div className="aspect-video w-full overflow-hidden">
           <Image
-            src={post.full_picture || "/placeholder.svg"}
+            src={post.full_picture}
             alt="Facebook post image"
             width={500}
             height={300}
             className="h-full w-full object-cover transition-all hover:scale-105"
+            unoptimized={!post.full_picture.startsWith('/')}
           />
         </div>
       )}
