@@ -292,7 +292,7 @@ export default function Home() {
                     type="email"
                     placeholder="Enter your email"
                     required
-                    className="rounded-full bg-white/90 placeholder:text-gray-600"
+                    className="rounded-full bg-white/90 placeholder:text-gray-600 text-black"
                   />
                   <Button
                     type="submit"
