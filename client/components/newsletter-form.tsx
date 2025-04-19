@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { useToast } from "@/hooks/use-toast"
 import { Badge } from "@/components/ui/badge"
 import { useLanguage } from "@/components/language-provider"
+import emailjs from "@emailjs/browser"
 
 export function NewsletterForm() {
   const [email, setEmail] = useState("")
@@ -19,15 +20,39 @@ export function NewsletterForm() {
     e.preventDefault()
     setIsLoading(true)
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Use EmailJS to send the newsletter subscription
+      const templateParams = {
+        email: email,
+        subscribe_date: new Date().toISOString(),
+      }
+
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "",
+        process.env.NEXT_PUBLIC_EMAILJS_CONTACT_TEMPLATE_ID || "",
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "",
+      )
+
+      if (result.text === "OK") {
+        toast({
+          title: t("home.newsletter.successTitle") || "Success!",
+          description: t("home.newsletter.successMessage") || "You've been subscribed to our newsletter.",
+        })
+        setEmail("")
+      } else {
+        throw new Error("Newsletter subscription failed")
+      }
+    } catch (error) {
+      console.error("Error subscribing to newsletter:", error)
       toast({
-        title: "Success!",
-        description: "You've been subscribed to our newsletter.",
+        title: t("home.newsletter.errorTitle") || "Error",
+        description: t("home.newsletter.errorMessage") || "Failed to subscribe. Please try again.",
+        variant: "destructive",
       })
-      setEmail("")
+    } finally {
       setIsLoading(false)
-    }, 1000)
+    }
   }
 
   return (
@@ -40,11 +65,12 @@ export function NewsletterForm() {
       <form onSubmit={handleSubmit} className="space-y-3">
         <Input
           type="email"
-          placeholder="Enter your email"
+          placeholder={t("home.newsletter.emailPlaceholder") || "Enter your email"}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
           className="rounded-full"
+          name="email"
         />
         <Button
           type="submit"
