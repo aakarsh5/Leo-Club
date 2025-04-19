@@ -31,20 +31,31 @@ export function NewsletterForm() {
   }
 
   return (
-    <div className="w-full space-y-4 p-6 rounded-xl bg-gradient-to-br from-background to-muted/50 border shadow-lg">
-      <div className="space-y-2">
-        <Badge className="mb-2 bg-accent text-accent-foreground">{t("home.newsletter.title")}</Badge>
-        <h3 className="text-xl font-bold">{t("home.newsletter.heading")}</h3>
-        <p className="text-muted-foreground text-balance">{t("home.newsletter.description")}</p>
+    <div 
+      className="w-full space-y-4 p-6 rounded-xl shadow-lg relative overflow-hidden"
+      style={{
+        backgroundImage: 'url("https://images.pexels.com/photos/9642864/pexels-photo-9642864.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      {/* Overlay for better readability */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/80 to-accent/70 mix-blend-multiply"></div>
+      
+      <div className="relative z-10 space-y-2">
+        <Badge className="mb-2 bg-white text-primary">{t("home.newsletter.title")}</Badge>
+        <h3 className="text-xl font-bold text-white">{t("home.newsletter.heading")}</h3>
+        <p className="text-white/90 text-balance">{t("home.newsletter.description")}</p>
       </div>
-      <form onSubmit={handleSubmit} className="space-y-3">
+      
+      <form onSubmit={handleSubmit} className="relative z-10 space-y-3">
         <Input
           type="email"
           placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="rounded-full"
+          className="rounded-full bg-white/90 placeholder:text-gray-600"
         />
         <Button
           type="submit"
@@ -54,7 +65,8 @@ export function NewsletterForm() {
           {isLoading ? t("common.subscribing") : t("common.subscribe")}
         </Button>
       </form>
-      <p className="text-xs text-muted-foreground">{t("common.privacyNotice")}</p>
+      
+      <p className="relative z-10 text-xs text-white/80">{t("common.privacyNotice")}</p>
     </div>
   )
 }

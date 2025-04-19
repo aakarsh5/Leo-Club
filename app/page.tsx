@@ -11,6 +11,8 @@ import { EventCard } from "@/components/event-card"
 import { NewsletterForm } from "@/components/newsletter-form"
 import { Badge } from "@/components/ui/badge"
 import { useLanguage } from "@/components/language-provider"
+import ImageSlideshow from "@/components/image-slideshow"
+import { Input } from "@/components/ui/input"
 
 export default function Home() {
   const { t } = useLanguage()
@@ -55,16 +57,11 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px]">
               <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-primary/10 to-accent/10 rounded-3xl blur-xl" />
-              <Image
-                src="/placeholder.svg?height=550&width=550"
-                width={550}
-                height={550}
-                alt="Leo Club members in action"
-                className="mx-auto aspect-video overflow-hidden rounded-3xl object-cover sm:w-full lg:aspect-square animate-float shadow-xl"
-                priority
-              />
+              <div className="w-full h-full rounded-3xl overflow-hidden shadow-xl animate-fade-in delay-100">
+                <ImageSlideshow />
+              </div>
             </div>
           </div>
         </div>
@@ -246,23 +243,29 @@ export default function Home() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden accent-gradient">
-        <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-primary/20 blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-accent/20 blur-3xl" />
-        </div>
+      <section 
+        className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden"
+        style={{
+          backgroundImage: 'url("https://media.istockphoto.com/id/181891488/photo/group-of-running-happy-indian-children-desert-village-india.jpg?s=612x612&w=0&k=20&c=Ynpx7RaghSfyZVug80jBa4rbo6Pn9TjI8ntvYSOdhGM=")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        {/* Overlay for better readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/70 to-accent/60 mix-blend-multiply"></div>
 
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 relative z-10">
           <div className="grid gap-10 px-10 md:gap-16 lg:grid-cols-2">
             <div className="space-y-4 animate-fade-in">
-              <Badge className="mb-2 bg-primary text-primary-foreground">{t("home.cta.title")}</Badge>
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight blue-yellow-gradient-text">
+              <Badge className="mb-2 bg-white text-primary">{t("home.cta.title")}</Badge>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-white">
                 {t("home.cta.heading")}
               </h2>
-              <p className="text-muted-foreground md:text-xl text-balance">{t("home.cta.description")}</p>
+              <p className="text-white/90 md:text-xl text-balance">{t("home.cta.description")}</p>
               <div className="flex flex-col gap-2 min-[400px]:flex-row pt-2">
                 <Link href="/join">
-                  <Button size="lg" className="rounded-full bg-primary hover:bg-primary/90">
+                  <Button size="lg" className="rounded-full bg-white text-primary hover:bg-white/90">
                     {t("common.joinUs")}
                   </Button>
                 </Link>
@@ -270,7 +273,7 @@ export default function Home() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="rounded-full border-accent text-accent hover:bg-accent/10"
+                    className="rounded-full border-white text-white hover:bg-white/10"
                   >
                     {t("common.contactUs")}
                   </Button>
@@ -278,7 +281,28 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col items-start space-y-4 animate-fade-in delay-200">
-              <NewsletterForm />
+              <div className="w-full space-y-4 p-6 rounded-xl bg-white/10 backdrop-blur-sm shadow-lg">
+                <div className="space-y-2">
+                  <Badge className="mb-2 bg-white text-primary">{t("home.newsletter.title")}</Badge>
+                  <h3 className="text-xl font-bold text-white">{t("home.newsletter.heading")}</h3>
+                  <p className="text-white/90 text-balance">{t("home.newsletter.description")}</p>
+                </div>
+                <form onSubmit={(e) => e.preventDefault()} className="space-y-3">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email"
+                    required
+                    className="rounded-full bg-white/90 placeholder:text-gray-600"
+                  />
+                  <Button
+                    type="submit"
+                    className="w-full rounded-full bg-accent text-accent-foreground hover:bg-accent/90"
+                  >
+                    {t("common.subscribe")}
+                  </Button>
+                </form>
+                <p className="text-xs text-white/80">{t("common.privacyNotice")}</p>
+              </div>
             </div>
           </div>
         </div>
