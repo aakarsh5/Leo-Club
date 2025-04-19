@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import {
   Card,
@@ -7,32 +9,28 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-export const metadata = {
-  title: "About Us | Leo Club of Biratnagar Central Megha",
-  description:
-    "Learn about the Leo Club of Biratnagar Central Megha, our history, mission, and the team behind our community service initiatives.",
-};
+import { useLanguage } from "@/components/language-provider";
 
 export default function AboutPage() {
+  const { t } = useLanguage();
+
   return (
     <div className="container px-4 py-12 md:px-6 md:py-24">
       <div className="mx-auto max-w-4xl space-y-12">
         <div className="space-y-4 text-center">
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl">
-            About Us
+            {t("about.title")}
           </h1>
           <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-            Learn about our club, our history, and the dedicated team behind our
-            community service initiatives.
+            {t("about.description")}
           </p>
         </div>
 
         <Tabs defaultValue="about" className="w-full">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="about">About</TabsTrigger>
-            <TabsTrigger value="history">History</TabsTrigger>
-            <TabsTrigger value="team">Our Team</TabsTrigger>
+            <TabsTrigger value="about">{t("about.tabs.about")}</TabsTrigger>
+            <TabsTrigger value="history">{t("about.tabs.history")}</TabsTrigger>
+            <TabsTrigger value="team">{t("about.tabs.team")}</TabsTrigger>
           </TabsList>
           <TabsContent value="about" className="space-y-6 pt-6">
             <div className="grid gap-6 md:grid-cols-2 md:gap-12">
@@ -44,83 +42,68 @@ export default function AboutPage() {
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover"
               />
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold">Who We Are</h2>
+                <h2 className="text-2xl font-bold">{t("about.whoWeAre.title")}</h2>
                 <p className="text-muted-foreground">
-                  The Leo Club of Biratnagar Central Megha is a youth
-                  organization that is part of Lions Clubs International. We are
-                  dedicated to serving our community through various service
-                  projects and initiatives.
+                  {t("about.whoWeAre.description1")}
                 </p>
                 <p className="text-muted-foreground">
-                  Our club provides young people with an opportunity to develop
-                  leadership skills by organizing and carrying out community
-                  service activities. We are committed to making a positive
-                  impact in our community and beyond.
+                  {t("about.whoWeAre.description2")}
                 </p>
-                <h2 className="text-2xl font-bold mt-6">Our Vision</h2>
+                <h2 className="text-2xl font-bold mt-6">{t("about.vision.title")}</h2>
                 <p className="text-muted-foreground">
-                  To be the global leader in community and humanitarian service,
-                  empowering youth to become agents of positive change.
+                  {t("about.vision.description")}
                 </p>
               </div>
             </div>
           </TabsContent>
           <TabsContent value="history" className="space-y-6 pt-6">
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold">Our Journey</h2>
+              <h2 className="text-2xl font-bold">{t("about.journey.title")}</h2>
               <p className="text-muted-foreground">
-                The Leo Club of Biratnagar Central Megha was founded in 2010
-                with a small group of passionate young individuals who wanted to
-                make a difference in their community. Since then, we have grown
-                into a vibrant organization with dozens of active members.
+                {t("about.journey.description")}
               </p>
               <div className="grid gap-6 md:grid-cols-2">
                 <Card>
                   <CardHeader>
                     <CardTitle>2010</CardTitle>
-                    <CardDescription>Foundation</CardDescription>
+                    <CardDescription>{t("about.timeline.foundation")}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <p>
-                      Established with 15 founding members under the sponsorship
-                      of Lions Club of Biratnagar Central.
+                      {t("about.timeline.foundationDesc")}
                     </p>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardHeader>
                     <CardTitle>2015</CardTitle>
-                    <CardDescription>Growth & Recognition</CardDescription>
+                    <CardDescription>{t("about.timeline.growth")}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <p>
-                      Expanded to 30 members and received regional recognition
-                      for community service excellence.
+                      {t("about.timeline.growthDesc")}
                     </p>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardHeader>
                     <CardTitle>2018</CardTitle>
-                    <CardDescription>Major Initiatives</CardDescription>
+                    <CardDescription>{t("about.timeline.initiatives")}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <p>
-                      Launched signature projects including the Clean Water
-                      Initiative and Youth Leadership Program.
+                      {t("about.timeline.initiativesDesc")}
                     </p>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardHeader>
                     <CardTitle>2020-Present</CardTitle>
-                    <CardDescription>Digital Transformation</CardDescription>
+                    <CardDescription>{t("about.timeline.transformation")}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <p>
-                      Adapted to virtual service during the pandemic and
-                      expanded our digital presence to reach more community
-                      members.
+                      {t("about.timeline.transformationDesc")}
                     </p>
                   </CardContent>
                 </Card>
@@ -128,10 +111,9 @@ export default function AboutPage() {
             </div>
           </TabsContent>
           <TabsContent value="team" className="space-y-6 pt-6">
-            <h2 className="text-2xl font-bold">Leadership Team</h2>
+            <h2 className="text-2xl font-bold">{t("about.team.title")}</h2>
             <p className="text-muted-foreground mb-6">
-              Meet the dedicated individuals who lead our club and drive our
-              mission forward.
+              {t("about.team.description")}
             </p>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {[

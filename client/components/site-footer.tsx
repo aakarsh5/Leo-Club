@@ -52,8 +52,8 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/events" className="text-muted-foreground hover:text-primary">
-                  {t("nav.events")}
+                <Link href="/social" className="text-muted-foreground hover:text-primary">
+                  {t("nav.social")}
                 </Link>
               </li>
               <li>

@@ -38,6 +38,10 @@ export function SiteHeader() {
       label: t("nav.blog"),
     },
     {
+      href: "/social",
+      label: t("nav.social"),
+    },
+    {
       href: "/contact",
       label: t("nav.contact"),
     },

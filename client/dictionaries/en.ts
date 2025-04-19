@@ -29,6 +29,7 @@ export const en = {
     joinUs: "Join Us",
     blog: "Blog",
     contact: "Contact",
+    social: "Social Media",
   },
   home: {
     hero: {
@@ -78,6 +79,42 @@ export const en = {
       description: "Stay updated with our latest news, events, and initiatives.",
     },
   },
+  about: {
+    title: "About Us",
+    description: "Learn about our club, our history, and the dedicated team behind our community service initiatives.",
+    tabs: {
+      about: "About",
+      history: "History",
+      team: "Our Team"
+    },
+    whoWeAre: {
+      title: "Who We Are",
+      description1: "The Leo Club of Biratnagar Central Megha is a youth organization that is part of Lions Clubs International. We are dedicated to serving our community through various service projects and initiatives.",
+      description2: "Our club provides young people with an opportunity to develop leadership skills by organizing and carrying out community service activities. We are committed to making a positive impact in our community and beyond."
+    },
+    vision: {
+      title: "Our Vision",
+      description: "To be the global leader in community and humanitarian service, empowering youth to become agents of positive change."
+    },
+    journey: {
+      title: "Our Journey",
+      description: "The Leo Club of Biratnagar Central Megha was founded in 2010 with a small group of passionate young individuals who wanted to make a difference in their community. Since then, we have grown into a vibrant organization with dozens of active members."
+    },
+    timeline: {
+      foundation: "Foundation",
+      foundationDesc: "Established with 15 founding members under the sponsorship of Lions Club of Biratnagar Central.",
+      growth: "Growth & Recognition",
+      growthDesc: "Expanded to 30 members and received regional recognition for community service excellence.",
+      initiatives: "Major Initiatives",
+      initiativesDesc: "Launched signature projects including the Clean Water Initiative and Youth Leadership Program.",
+      transformation: "Digital Transformation",
+      transformationDesc: "Adapted to virtual service during the pandemic and expanded our digital presence to reach more community members."
+    },
+    team: {
+      title: "Leadership Team",
+      description: "Meet the dedicated individuals who lead our club and drive our mission forward."
+    }
+  },
   blog: {
     title: "Stay Updated",
     heading: "Blog & News",
@@ -93,6 +130,9 @@ export const en = {
     followFacebook: "Follow us on Facebook",
     latestArticles: "Latest Articles",
     loadMore: "Load More Articles",
+    noFacebookPosts: "No Facebook posts available at the moment. Please check back later.",
+    viewOnFacebook: "View on Facebook",
+    socialMedia: "Social Media"
   },
   contact: {
     form: {
