@@ -6,10 +6,8 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Globe } from "lucide-react"
 
 const languages = [
-  { code: "en", name: "English", flag: "🇬🇧" },
   { code: "ne", name: "नेपाली", flag: "🇳🇵" },
-  { code: "hi", name: "हिन्दी", flag: "🇮🇳" },
-  { code: "bn", name: "বাংলা", flag: "🇧🇩" },
+  { code: "en", name: "English", flag: "🇬🇧" },
 ]
 
 export function LanguageSwitcher() {
@@ -29,7 +27,7 @@ export function LanguageSwitcher() {
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
-            onClick={() => setLanguage(lang.code as "en" | "ne" | "hi" | "bn")}
+            onClick={() => setLanguage(lang.code as "en" | "ne")}
             className={language === lang.code ? "bg-accent/20" : ""}
           >
             <span className="mr-2">{lang.flag}</span>

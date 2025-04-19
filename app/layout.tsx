@@ -13,7 +13,8 @@ export const metadata = {
   title: "Leo Club of Biratnagar Central Megha",
   description:
     "Official website of Leo Club of Biratnagar Central Megha, an NGO focused on community service in Biratnagar, Nepal.",
-    generator: 'v0.dev'
+  generator: 'v0.dev',
+  lang: 'ne'
 }
 
 export default function RootLayout({
@@ -22,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="ne" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <LanguageProvider>

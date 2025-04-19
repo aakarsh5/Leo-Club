@@ -4,7 +4,7 @@ import type React from "react"
 import { createContext, useContext, useState, useEffect } from "react"
 import { dictionaries } from "@/dictionaries"
 
-type Language = "en" | "ne" | "hi" | "bn"
+type Language = "en" | "ne"
 
 type LanguageContextType = {
   language: Language
@@ -15,13 +15,17 @@ type LanguageContextType = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en")
+  const [language, setLanguage] = useState<Language>("ne")
 
   // Load language preference from localStorage on client side
   useEffect(() => {
     const savedLanguage = localStorage.getItem("language") as Language
-    if (savedLanguage && ["en", "ne", "hi", "bn"].includes(savedLanguage)) {
+    if (savedLanguage && ["en", "ne"].includes(savedLanguage)) {
       setLanguage(savedLanguage)
+    } else {
+      // Set Nepali as default if no saved preference
+      setLanguage("ne")
+      localStorage.setItem("language", "ne")
     }
   }, [])
 
