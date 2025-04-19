@@ -18,19 +18,19 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 hero-gradient overflow-hidden">
-        <div className="container px-4 md:px-6 relative mb-56">
+      <section className="w-full py-6 md:py-12 lg:py-20 xl:py-28 hero-gradient overflow-hidden">
+        <div className="container px-4 md:px-6 relative mb-52">
           <div className="absolute inset-0 -z-10 overflow-hidden">
             <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-primary/20 blur-3xl" />
             <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-accent/20 blur-3xl" />
           </div>
 
           <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-            <div className="flex flex-col justify-center space-y-4">
+            <div className="flex flex-col justify-start space-y-4 pt-0 mt-0">
               <Badge className="w-fit animate-fade-in" variant="outline">
                 {t("home.hero.tagline")}
               </Badge>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none blue-yellow-gradient-text animate-fade-in text-balance">
                   {t("home.hero.title")}
                 </h1>
@@ -38,7 +38,7 @@ export default function Home() {
                   {t("home.hero.description")}
                 </p>
               </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row animate-fade-in delay-200">
+              <div className="flex flex-col gap-2 min-[400px]:flex-row animate-fade-in delay-200 pt-1">
                 <Link href="/join">
                   <Button size="lg" className="gap-1 rounded-full bg-primary hover:bg-primary/90">
                     {t("common.joinUs")} <ArrowRight className="h-4 w-4" />
