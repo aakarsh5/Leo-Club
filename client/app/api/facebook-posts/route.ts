@@ -1,45 +1,11 @@
 import { NextResponse } from "next/server"
 
+export const dynamic = "force-static";
+
 export async function GET() {
   try {
-    // Check if we have the required environment variables
-    const pageId = process.env.FACEBOOK_PAGE_ID
-    const accessToken = process.env.FACEBOOK_ACCESS_TOKEN
-
-    if (!pageId || !accessToken) {
-      console.warn("Facebook API credentials not found in environment variables")
-      return NextResponse.json(getMockPosts(), { status: 200 })
-    }
-
-    // Fetch posts from Facebook Graph API
-    const response = await fetch(
-      `https://graph.facebook.com/v18.0/${pageId}/posts?fields=id,message,created_time,full_picture,permalink_url,likes.summary(true),comments.summary(true),shares&access_token=${accessToken}`,
-      { next: { revalidate: 3600 } }, // Cache for 1 hour
-    )
-
-    if (!response.ok) {
-      throw new Error(`Facebook API error: ${response.status}`)
-    }
-
-    const data = await response.json()
-
-    if (!data.data || !Array.isArray(data.data)) {
-      throw new Error("Invalid response format from Facebook API")
-    }
-
-    // Transform the data to match our interface
-    const posts = data.data.map((post: any) => ({
-      id: post.id,
-      message: post.message,
-      created_time: post.created_time,
-      full_picture: post.full_picture,
-      permalink_url: post.permalink_url,
-      likes: post.likes?.summary?.total_count || 0,
-      comments: post.comments?.summary?.total_count || 0,
-      shares: post.shares?.count || 0,
-    }))
-
-    return NextResponse.json(posts)
+    // For static export, we'll rely on mock data
+    return NextResponse.json(getMockPosts(), { status: 200 })
   } catch (error) {
     console.error("Error fetching Facebook posts:", error)
     return NextResponse.json(getMockPosts(), { status: 200 })

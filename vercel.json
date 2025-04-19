@@ -1,8 +1,28 @@
 {
   "version": 2,
-  "buildCommand": null,
+  "buildCommand": "cd client && npm install && npm run build",
   "devCommand": null,
   "installCommand": null,
-  "framework": null,
-  "outputDirectory": null
+  "framework": "nextjs",
+  "outputDirectory": "client/out",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(css|js|jpg|jpeg|png|gif|svg|ico|webp|woff|woff2|ttf|otf)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
 } 

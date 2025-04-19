@@ -21,8 +21,9 @@ const nextConfig = {
         hostname: '**',
       },
     ],
+    unoptimized: true,
   },
-  output: 'standalone',
+  output: 'export',
 }
 
 mergeConfig(nextConfig, userConfig)
