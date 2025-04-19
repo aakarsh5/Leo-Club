@@ -69,10 +69,7 @@ export default function Home() {
             {/* Image Column */}
             <div className="relative hidden lg:block">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/10 rounded-3xl blur-xl" />
-
-              
-              
-              
+              <Slideshow />
             </div>
           </div>
         </div>
