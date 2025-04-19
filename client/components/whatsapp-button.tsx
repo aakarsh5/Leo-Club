@@ -5,7 +5,7 @@ import { useLanguage } from "@/components/language-provider"
 
 export function WhatsAppButton() {
   const { t } = useLanguage()
-  const phoneNumber = "9771234567890" // Replace with actual phone number
+  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_PHONE_NUMBER || "9771234567890"
   const message = encodeURIComponent(t("common.whatsappMessage"))
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
 
