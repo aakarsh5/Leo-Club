@@ -165,16 +165,16 @@ export default function Home() {
               className="animate-fade-in delay-300"
             />
             <ProjectCard
-              title="Menstrual Hygiene Awareness"
-              description="Educating young women about menstrual health and providing hygiene products to underserved communities."
-              imageSrc="/Slideshow and teamwork/FB_IMG_1744432733977.jpg"
-              date="June 2023"
+              title="Youth Leadership Workshop"
+              description="Training the next generation of community leaders through interactive workshops."
+              imageSrc="/placeholder.svg?height=200&width=300"
+              date="May 2023"
               className="animate-fade-in delay-400"
             />
             <ProjectCard
               title="Tree Plantation Drive"
-              description="Planting over 500 trees to combat deforestation and promote environmental sustainability."
-              imageSrc="/Slideshow and teamwork/IMG-20240809-WA0001.jpg"
+              description="Planting over 100 trees to combat deforestation and promote environmental sustainability."
+              imageSrc="/Slideshow and teamwork/placeholder.svg?height=200&width=300"
               date="July 2023"
               className="animate-fade-in delay-500"
             />
@@ -292,7 +292,7 @@ export default function Home() {
                     type="email"
                     placeholder="Enter your email"
                     required
-                    className="rounded-full bg-white/90 placeholder:text-gray-600 text-black"
+                    className="rounded-full bg-white/90 placeholder:text-gray-600"
                   />
                   <Button
                     type="submit"

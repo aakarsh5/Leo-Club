@@ -28,7 +28,7 @@ export default function AboutPage() {
           <TabsContent value="about" className="space-y-6 pt-6">
             <div className="grid gap-6 md:grid-cols-2 md:gap-12">
               <Image
-                src="/placeholder.svg?height=400&width=600"
+                src="/Slideshow and teamwork/FB_IMG_1744432755031.jpg"
                 width={600}
                 height={400}
                 alt="Leo Club members at a community event"
@@ -117,41 +117,37 @@ export default function AboutPage() {
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
-                  name: "Rahul Sharma",
+                  name: "Leo Aaryan Baskota",
                   position: "President",
                   bio: "Passionate about community development and youth empowerment.",
-                  image: "/placeholder.svg?height=300&width=300",
+                  image: "/Team/President .jpg",
                 },
                 {
-                  name: "Priya Patel",
+                  name: "Leo Pawan Kumar Kafle",
                   position: "Vice President",
                   bio: "Dedicated to environmental conservation and sustainable development.",
-                  image: "/placeholder.svg?height=300&width=300",
+                  image: "/Team/Vice president.JPG",
                 },
                 {
-                  name: "Amit Kumar",
-                  position: "Secretary",
+                  name: "Lion Sandeep Das Shrestha",
+                  position: "Club Advisor",
                   bio: "Focused on education initiatives and digital literacy programs.",
-                  image: "/placeholder.svg?height=300&width=300",
+                  image: "/Team/Club Advisor.jpg",
                 },
                 {
-                  name: "Neha Singh",
-                  position: "Treasurer",
+                  name: "Leo Prasansha Gautam",
+                  position: "Club Secretary",
                   bio: "Expert in financial management and fundraising strategies.",
-                  image: "/placeholder.svg?height=300&width=300",
+                  image: "/Team/Secretary .jpg",
                 },
                 {
-                  name: "Rohan Joshi",
-                  position: "Service Director",
+                  name: "Leo Prawin Giri",
+                  position: "Treasurer",
                   bio: "Coordinates all service projects and volunteer activities.",
-                  image: "/placeholder.svg?height=300&width=300",
+                  image: "/Team/Treasurer.jpg",
                 },
-                {
-                  name: "Anita Thapa",
-                  position: "Marketing Director",
-                  bio: "Manages club communications and public relations.",
-                  image: "/placeholder.svg?height=300&width=300",
-                },
+               
+                
               ].map((member, index) => (
                 <Card key={index} className="overflow-hidden">
                   <div className="aspect-square w-full">
