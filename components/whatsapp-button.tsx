@@ -17,6 +17,7 @@ export default function WhatsAppButton() {
             variant="default" 
             size="lg" 
             className="rounded-full shadow-lg"
+            phoneNumber="+977 984-2023888"
           />
         </div>
       )}

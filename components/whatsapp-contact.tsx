@@ -9,6 +9,7 @@ interface WhatsAppContactProps {
   customMessage?: string
   className?: string
   iconOnly?: boolean
+  phoneNumber?: string
 }
 
 export function WhatsAppContact({
@@ -17,14 +18,24 @@ export function WhatsAppContact({
   customMessage,
   className = "",
   iconOnly = false,
+  phoneNumber,
 }: WhatsAppContactProps) {
   const handleWhatsAppClick = () => {
-    // Get the phone number and clean it (remove spaces, dashes, and plus sign)
-    const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_PHONE_NUMBER || ""
-    const cleanPhoneNumber = phoneNumber.replace(/[\s\-\+]/g, "")
+    // Use provided phone number or env variable or fallback to hardcoded number
+    const phone = phoneNumber || 
+                  process.env.NEXT_PUBLIC_WHATSAPP_PHONE_NUMBER || 
+                  "+977 984-2023888"
+    
+    // Clean the number (remove spaces, dashes, and plus sign)
+    const cleanPhoneNumber = phone.replace(/[\s\-\+]/g, "")
     
     // Get and encode the message
-    const message = encodeURIComponent(customMessage || process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE || "")
+    const defaultMessage = "Hello, I'm interested in learning more about Leo Club of Biratnagar Central Megha."
+    const message = encodeURIComponent(
+      customMessage || 
+      process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE || 
+      defaultMessage
+    )
     
     // Open WhatsApp with the cleaned phone number
     window.open(`https://wa.me/${cleanPhoneNumber}?text=${message}`, "_blank")

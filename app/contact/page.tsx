@@ -73,7 +73,7 @@ export default function ContactPage() {
                 </div>
                 <div className="mt-4 pt-4 border-t">
                   <h3 className="font-medium mb-2">Quick Connect</h3>
-                  <WhatsAppContact className="w-full" />
+                  <WhatsAppContact className="w-full" phoneNumber="+977 984-2023888" />
                 </div>
               </CardContent>
             </Card>
