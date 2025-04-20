@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useToast } from "@/hooks/use-toast"
+import emailjs from '@emailjs/browser'
 
 export function ContactForm() {
   const [isLoading, setIsLoading] = useState(false)
@@ -18,17 +19,38 @@ export function ContactForm() {
     e.preventDefault()
     setIsLoading(true)
 
-    // Simulate API call
-    setTimeout(() => {
+    const form = e.target as HTMLFormElement
+    const formData = new FormData(form)
+    const templateParams = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      subject: formData.get('subject'),
+      message: formData.get('message'),
+    }
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+        process.env.NEXT_PUBLIC_EMAILJS_CONTACT_TEMPLATE_ID || '',
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
+      )
+
       toast({
         title: "Message Sent!",
         description: "We'll get back to you as soon as possible.",
       })
-      // Reset form
-      const form = e.target as HTMLFormElement
       form.reset()
+    } catch (error) {
+      console.error('Failed to send email:', error)
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive"
+      })
+    } finally {
       setIsLoading(false)
-    }, 1000)
+    }
   }
 
   return (

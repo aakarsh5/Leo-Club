@@ -9,26 +9,56 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { useToast } from "@/hooks/use-toast"
+import emailjs from '@emailjs/browser'
 
 export function MembershipForm() {
   const [isLoading, setIsLoading] = useState(false)
   const { toast } = useToast()
+  const [gender, setGender] = useState("male")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
 
-    // Simulate API call
-    setTimeout(() => {
+    const form = e.target as HTMLFormElement
+    const formData = new FormData(form)
+    const templateParams = {
+      firstName: formData.get('first-name'),
+      lastName: formData.get('last-name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      dob: formData.get('dob'),
+      address: formData.get('address'),
+      gender: gender,
+      occupation: formData.get('occupation'),
+      reason: formData.get('reason'),
+      formType: 'Membership Application'
+    }
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+        process.env.NEXT_PUBLIC_EMAILJS_MEMBERSHIP_TEMPLATE_ID || '',
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
+      )
+
       toast({
         title: "Application Submitted!",
         description: "We'll contact you soon about your membership application.",
       })
-      // Reset form
-      const form = e.target as HTMLFormElement
       form.reset()
+      setGender("male")
+    } catch (error) {
+      console.error('Failed to send application:', error)
+      toast({
+        title: "Error",
+        description: "Failed to submit application. Please try again later.",
+        variant: "destructive"
+      })
+    } finally {
       setIsLoading(false)
-    }, 1000)
+    }
   }
 
   return (
@@ -61,7 +91,7 @@ export function MembershipForm() {
       </div>
       <div className="space-y-2">
         <Label>Gender</Label>
-        <RadioGroup defaultValue="male">
+        <RadioGroup defaultValue="male" value={gender} onValueChange={setGender}>
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="male" id="male" />
             <Label htmlFor="male">Male</Label>

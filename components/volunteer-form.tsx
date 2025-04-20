@@ -9,27 +9,94 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useToast } from "@/hooks/use-toast"
+import emailjs from '@emailjs/browser'
 
 export function VolunteerForm() {
   const [isLoading, setIsLoading] = useState(false)
   const { toast } = useToast()
+  const [interests, setInterests] = useState<string[]>([])
+  const [availability, setAvailability] = useState<string[]>([])
+
+  const toggleInterest = (value: string) => {
+    setInterests(prev => 
+      prev.includes(value) 
+        ? prev.filter(item => item !== value) 
+        : [...prev, value]
+    )
+  }
+
+  const toggleAvailability = (value: string) => {
+    setAvailability(prev => 
+      prev.includes(value) 
+        ? prev.filter(item => item !== value) 
+        : [...prev, value]
+    )
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
 
-    // Simulate API call
-    setTimeout(() => {
+    const form = e.target as HTMLFormElement
+    const formData = new FormData(form)
+    const templateParams = {
+      firstName: formData.get('first-name'),
+      lastName: formData.get('last-name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      interests: interests.join(', '),
+      availability: availability.join(', '),
+      skills: formData.get('skills'),
+      message: formData.get('message'),
+      formType: 'Volunteer Application'
+    }
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+        process.env.NEXT_PUBLIC_EMAILJS_VOLUNTEER_TEMPLATE_ID || '',
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
+      )
+
       toast({
         title: "Thank you!",
         description: "Your volunteer application has been received.",
       })
-      // Reset form
-      const form = e.target as HTMLFormElement
       form.reset()
+      setInterests([])
+      setAvailability([])
+    } catch (error) {
+      console.error('Failed to send application:', error)
+      toast({
+        title: "Error",
+        description: "Failed to submit application. Please try again later.",
+        variant: "destructive"
+      })
+    } finally {
       setIsLoading(false)
-    }, 1000)
+    }
   }
+
+  const interestAreas = [
+    "Health & Wellness",
+    "Education",
+    "Environment",
+    "Community Development",
+    "Event Planning",
+    "Marketing & Communications",
+    "Photography & Design",
+    "Fundraising",
+  ]
+
+  const availabilityTimes = [
+    "Weekday Mornings",
+    "Weekday Afternoons",
+    "Weekday Evenings",
+    "Weekend Mornings",
+    "Weekend Afternoons",
+    "Weekend Evenings",
+  ]
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
@@ -54,18 +121,13 @@ export function VolunteerForm() {
       <div className="space-y-2">
         <Label>Areas of Interest</Label>
         <div className="grid gap-2 sm:grid-cols-2">
-          {[
-            "Health & Wellness",
-            "Education",
-            "Environment",
-            "Community Development",
-            "Event Planning",
-            "Marketing & Communications",
-            "Photography & Design",
-            "Fundraising",
-          ].map((area) => (
+          {interestAreas.map((area) => (
             <div key={area} className="flex items-center space-x-2">
-              <Checkbox id={area.toLowerCase().replace(/\s+/g, "-")} />
+              <Checkbox 
+                id={area.toLowerCase().replace(/\s+/g, "-")} 
+                checked={interests.includes(area)}
+                onCheckedChange={() => toggleInterest(area)}
+              />
               <Label htmlFor={area.toLowerCase().replace(/\s+/g, "-")}>{area}</Label>
             </div>
           ))}
@@ -74,16 +136,13 @@ export function VolunteerForm() {
       <div className="space-y-2">
         <Label htmlFor="availability">Availability</Label>
         <div className="grid gap-2 sm:grid-cols-2">
-          {[
-            "Weekday Mornings",
-            "Weekday Afternoons",
-            "Weekday Evenings",
-            "Weekend Mornings",
-            "Weekend Afternoons",
-            "Weekend Evenings",
-          ].map((time) => (
+          {availabilityTimes.map((time) => (
             <div key={time} className="flex items-center space-x-2">
-              <Checkbox id={time.toLowerCase().replace(/\s+/g, "-")} />
+              <Checkbox 
+                id={time.toLowerCase().replace(/\s+/g, "-")} 
+                checked={availability.includes(time)}
+                onCheckedChange={() => toggleAvailability(time)}
+              />
               <Label htmlFor={time.toLowerCase().replace(/\s+/g, "-")}>{time}</Label>
             </div>
           ))}
