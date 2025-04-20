@@ -1,6 +1,7 @@
 import { ContactForm } from "@/components/contact-form"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Mail, MapPin, Phone } from "lucide-react"
+import { WhatsAppContact } from "@/components/whatsapp-contact"
 
 export const metadata = {
   title: "Contact Us | Leo Club of Biratnagar Central Megha",
@@ -69,6 +70,10 @@ export default function ContactPage() {
                       +977 9876543210
                     </p>
                   </div>
+                </div>
+                <div className="mt-4 pt-4 border-t">
+                  <h3 className="font-medium mb-2">Quick Connect</h3>
+                  <WhatsAppContact className="w-full" />
                 </div>
               </CardContent>
             </Card>
