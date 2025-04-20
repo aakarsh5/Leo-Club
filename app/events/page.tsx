@@ -34,7 +34,7 @@ export default function EventsPage() {
                 description="Free health checkups and consultations for the local community."
                 date="April 15, 2024"
                 location="Biratnagar Community Center"
-                imageSrc="/placeholder.svg?height=200&width=300"
+                imageSrc="/Slideshow and teamwork/FB_IMG_1744432733977.jpg"
               />
               <EventCard
                 title="Annual Fundraising Gala"

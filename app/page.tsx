@@ -167,14 +167,14 @@ export default function Home() {
             <ProjectCard
               title="Youth Leadership Workshop"
               description="Training the next generation of community leaders through interactive workshops."
-              imageSrc="/placeholder.svg?height=200&width=300"
+              imageSrc="/Slideshow and teamwork/FB_IMG_1744432893399.jpg"
               date="May 2023"
               className="animate-fade-in delay-400"
             />
             <ProjectCard
               title="Tree Plantation Drive"
               description="Planting over 100 trees to combat deforestation and promote environmental sustainability."
-              imageSrc="/Slideshow and teamwork/placeholder.svg?height=200&width=300"
+              imageSrc="/Slideshow and teamwork/IMG-20240809-WA0048.jpg"
               date="July 2023"
               className="animate-fade-in delay-500"
             />
@@ -214,7 +214,7 @@ export default function Home() {
               description="Free health checkups and consultations for the local community."
               date="April 15, 2024"
               location="Biratnagar Community Center"
-              imageSrc="/placeholder.svg?height=200&width=300"
+              imageSrc="/Slideshow and teamwork/FB_IMG_1744432733977.jpg"
               className="animate-fade-in delay-300"
             />
             <EventCard
